@@ -37,7 +37,7 @@ export default function About() {
   ];
 
   const locations = [
-    { city: "Nagpur", state: "Maharashtra", lat: 21.1458, lng: 79.0882 },
+    { city: "Nagpur", state: "Maharashtra", lat: 21.176944, lng: 79.049419+ },
     { city: "Mumbai", state: "Maharashtra", lat: 19.0760, lng: 72.8777 },
     { city: "Pune", state: "Maharashtra", lat: 18.5204, lng: 73.8567 },
     { city: "Delhi", state: "Delhi", lat: 28.6139, lng: 77.2090 },
