@@ -3,6 +3,7 @@ import { FreeQuoteModal } from "@/components/FreeQuoteModal";
 import { Button } from "@/components/ui/button";
 import { Target, Lightbulb, Users, Shield, Briefcase, Building2, CheckCircle2, MapPin, Rocket, Sparkles } from "lucide-react";
 import { navigate } from "wouter/use-browser-location";
+import { InteractiveMap } from "@/components/InteractiveMap";
 export default function About() {
   const strengths = [
     { title: "Technical Expertise", desc: "Strong technical knowledge and collective team experience." },
@@ -71,19 +72,19 @@ export default function About() {
       </section>
 
       {/* About Us Section */}
-      <section className="py-20 bg-white">
+      <section className="py-16 md:py-20 bg-white">
       <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
               <span className="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">About Our Company</span>
-              <h2 className="text-3xl lg:text-5xl font-display font-bold mb-8 text-gray-900 leading-tight">
+              <h2 className="text-3xl lg:text-5xl font-display font-bold mb-6 md:mb-8 text-gray-900 leading-tight">
                 Expert Solutions for a Sustainable Future
               </h2>
-              <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
+              <div className="space-y-4 md:space-y-6 text-gray-600 text-base md:text-lg leading-relaxed">
                 <p>
                   Swayog Consultancy Services is honored to introduce itself as a company that brings complete Solar energy and electrical solutions under one roof. We provide Solar Energy and electrical Solutions, on turnkey basis or only for selective scope of work for small as well as utility scale projects.
                 </p>
@@ -91,7 +92,7 @@ export default function About() {
                   Established in year 2017, we have installed around 25 MW+ of solar projects. Our team consists of expert engineers, technicians, and consultants with cumulative 25+ years of experience in solar energy, electrical, thermal power, and other industries.
                 </p>
               </div>
-              <div className="mt-10 flex flex-wrap gap-8">
+              <div className="mt-8 md:mt-10 flex flex-wrap gap-6 md:gap-8">
                 <div className="flex flex-col">
                   <span className="text-4xl font-bold text-secondary">25+ MW</span>
                   <span className="text-gray-500 font-medium">Solar Installed</span>
@@ -106,7 +107,7 @@ export default function About() {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative"
+              className="relative w-full max-w-xl mx-auto"
             >
               <div className="aspect-[4/4] rounded-3xl overflow-hidden shadow-2xl">
                 <img 
@@ -127,7 +128,7 @@ export default function About() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-gray-50">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <motion.div 
@@ -159,10 +160,10 @@ export default function About() {
       </section>
 
       {/* Strengths */}
-      <section className="py-20">
+      <section className="py-16 md:py-20">
         <div className="container-custom text-center">
-          <h2 className="text-3xl lg:text-4xl font-display font-bold mb-16">Our Core Strengths</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <h2 className="text-3xl lg:text-4xl font-display font-bold mb-12 md:mb-16">Our Core Strengths</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {strengths.map((s, i) => (
               <div key={i} className="p-8 bg-white rounded-2xl border border-gray-100 hover:border-primary/50 transition-colors text-center group">
                 <div className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/10 transition-colors">
@@ -177,7 +178,7 @@ export default function About() {
       </section>
 
       {/* Meet Our Team */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-16 md:py-20 bg-gray-50">
         <div className="container-custom">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-display font-bold mb-4">Meet Our Expert Team</h2>
@@ -185,7 +186,7 @@ export default function About() {
               Our team of 30+ experienced professionals manages project execution with maximum efficiency and technical excellence.
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-8">
             {teamMembers.map((member, i) => (
               <motion.div
                 key={i}
@@ -215,136 +216,61 @@ export default function About() {
         </div>
       </section>
 
-      {/* Our Presence in India */}
-      <section className="py-20 bg-white">
+      
+
+      <section className="py-24 bg-white">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-display font-bold mb-4">Our Presence in India</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Serving clients across multiple states with our solar energy solutions and expertise.
+            <h2 className="text-3xl lg:text-5xl font-display font-bold mb-4">Our Presence in India</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              Headquartered in Nagpur, providing turnkey solar solutions across the nation.
             </p>
           </div>
-          <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-8 md:p-12 shadow-xl border border-gray-200">
-            <div className="relative bg-white rounded-2xl p-8 md:p-12 min-h-[400px]">
-              {/* India Map Representation */}
-              
-              
-              {/* Location List */}
-              <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-                {locations.map((location, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    whileHover={{ scale: 1.05 }}
-                    className="flex items-center gap-2 p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg hover:bg-primary/10 hover:shadow-md transition-all cursor-pointer border border-gray-200 hover:border-primary/30"
-                  >
-                    <div className="p-2 bg-primary/10 rounded-full">
-                      <MapPin className="h-4 w-4 text-primary shrink-0" />
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-slate-50 rounded-[3rem] p-8 md:p-12 border border-slate-100 shadow-sm">
+            
+            {/* Map Column */}
+            <div className="lg:col-span-7 z-0 overflow-hidden rounded-3xl">
+               <InteractiveMap locations={locations} />
+            </div>
+
+            {/* List Column */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                  <MapPin className="text-primary h-5 w-5" />
+                  Regional Centers
+                </h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {locations.map((loc, i) => (
+                    <div key={i} className="flex flex-col">
+                      <span className="text-sm font-bold text-gray-800">{loc.city}</span>
+                      <span className="text-[10px] text-gray-500 uppercase tracking-tighter">{loc.state}</span>
                     </div>
-                    <div>
-                      <p className="text-sm font-semibold text-gray-800">{location.city}</p>
-                      <p className="text-xs text-gray-500">{location.state}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-              
-              {/* Stats */}
-              <div className="mt-8 pt-8 border-t border-gray-200">
-                <div className="grid grid-cols-3 gap-6 text-center">
-                  <div>
-                    <p className="text-3xl font-bold text-primary mb-1">8+</p>
-                    <p className="text-sm text-gray-600">Cities</p>
-                  </div>
-                  <div>
-                    <p className="text-3xl font-bold text-primary mb-1">6+</p>
-                    <p className="text-sm text-gray-600">States</p>
-                  </div>
-                  <div>
-                    <p className="text-3xl font-bold text-primary mb-1">25+</p>
-                    <p className="text-sm text-gray-600">MW Installed</p>
-                  </div>
+                  ))}
                 </div>
               </div>
+
+              {/* Business Stats */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-6 bg-primary rounded-2xl text-white">
+                  <p className="text-3xl font-bold">25+</p>
+                  <p className="text-xs uppercase opacity-80">MW Installed</p>
+                </div>
+                <div className="p-6 bg-secondary rounded-2xl text-white">
+                  <p className="text-3xl font-bold">30+</p>
+                  <p className="text-xs uppercase opacity-80">Experts</p>
+                </div>
+              </div>
+              
+              <p className="text-gray-500 italic text-sm px-2">
+                * We are rapidly expanding. Our team is capable of executing projects in any state across India.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 relative overflow-hidden bg-gray-900 text-white">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/images/industrial.jpg" 
-            alt="Solar Partner" 
-            className="w-full h-full object-cover opacity-20 scale-110" 
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/90 to-transparent" />
-        </div>
-        
-        <div className="container-custom relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 backdrop-blur-md text-primary font-bold text-sm mb-6 border border-primary/20">
-                <Rocket className="h-4 w-4" />
-                <span className="tracking-widest uppercase">Company Motto</span>
-              </div>
-              <h2 className="text-4xl lg:text-6xl font-display font-bold mb-8 leading-tight">
-                Encouraging <span className="text-primary italic">Entrepreneurship</span>
-              </h2>
-              <p className="text-xl text-gray-300 mb-10 leading-relaxed max-w-xl">
-                Take charge of your future today. We invite individuals from every state in India to become solar partners in their local regions.
-              </p>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
-                {[
-                  { icon: Users, title: "Open to All", text: "Anyone from any state can join us" },
-                  { icon: Shield, title: "Full Support", text: "Training and resources provided" }
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-4 p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                    <item.icon className="h-10 w-10 text-primary shrink-0" />
-                    <div>
-                      <h4 className="font-bold text-lg mb-1">{item.title}</h4>
-                      <p className="text-sm text-gray-400">{item.text}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <Button 
-                size="lg" 
-                className="h-16 px-10 text-xl rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold shadow-2xl shadow-primary/20"
-                onClick={() => navigate("/contact")}
-              >
-                Join Our Network
-              </Button>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="relative hidden lg:block"
-            >
-              <div className="p-12 bg-white/10 backdrop-blur-xl rounded-[3rem] border border-white/10 shadow-2xl">
-                <blockquote className="text-2xl font-medium leading-relaxed italic text-gray-100">
-                  "With our comprehensive support and expert training, you’ll have everything you need to launch and grow a successful, sustainable enterprise. Build your business with our help."
-                </blockquote>
-                <div className="mt-8 flex items-center gap-4">
-                  <div className="w-12 h-1 bg-primary rounded-full" />
-                  <p className="text-sm font-bold uppercase tracking-widest text-primary">Swayog Mission</p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* Services & Group Companies */}
       <section className="py-20">
