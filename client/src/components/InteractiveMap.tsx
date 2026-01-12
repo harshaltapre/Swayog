@@ -12,30 +12,36 @@ if (typeof window !== "undefined") {
   });
 }
 
-// Custom icon for locations
-const createCustomIcon = (color: string = "#ea580c") => {
+// Custom icon for locations with enhanced design
+const createCustomIcon = (color: string = "#ea580c", isHQ: boolean = false) => {
+  const size = isHQ ? 32 : 28;
+  const innerSize = isHQ ? 10 : 8;
+  
   return L.divIcon({
     className: "custom-marker",
     html: `<div style="
-      background-color: ${color};
-      width: 24px;
-      height: 24px;
+      background: linear-gradient(135deg, ${color} 0%, ${color}dd 100%);
+      width: ${size}px;
+      height: ${size}px;
       border-radius: 50%;
       border: 3px solid white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25), 0 0 0 1px rgba(0,0,0,0.1);
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.2s ease;
+      cursor: pointer;
     ">
       <div style="
-        width: 8px;
-        height: 8px;
+        width: ${innerSize}px;
+        height: ${innerSize}px;
         background-color: white;
         border-radius: 50%;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.1);
       "></div>
     </div>`,
-    iconSize: [24, 24],
-    iconAnchor: [12, 12],
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2],
   });
 };
 
@@ -88,19 +94,22 @@ export function InteractiveMap({ locations }: InteractiveMapProps) {
 
     // Add markers for each location
     locations.forEach((location, index) => {
-      const icon = createCustomIcon(index === 0 ? "#ea580c" : "#0284c7");
+      const isHQ = index === 0;
+      const icon = createCustomIcon(isHQ ? "#ea580c" : "#0284c7", isHQ);
       
       const popupContent = `
-        <div style="text-align: center; padding: 8px;">
-          <h3 style="font-weight: bold; font-size: 18px; color: #1f2937; margin-bottom: 4px;">
+        <div style="text-align: center; padding: 12px 16px; min-width: 180px;">
+          <h3 style="font-weight: 700; font-size: 19px; color: #111827; margin-bottom: 6px; letter-spacing: -0.01em;">
             ${location.city}
           </h3>
-          <p style="font-size: 14px; color: #6b7280; margin: 0;">
+          <p style="font-size: 14px; color: #6b7280; margin: 0; font-weight: 500;">
             ${location.state}
           </p>
           ${
-            index === 0
-              ? '<span style="display: inline-block; margin-top: 8px; padding: 4px 8px; background-color: rgba(234, 88, 12, 0.1); color: #ea580c; font-size: 12px; font-weight: 600; border-radius: 4px;">Headquarters</span>'
+            isHQ
+              ? `<div style="margin-top: 12px; padding: 6px 12px; background: linear-gradient(135deg, rgba(234, 88, 12, 0.12) 0%, rgba(234, 88, 12, 0.08) 100%); color: #ea580c; font-size: 12px; font-weight: 700; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid rgba(234, 88, 12, 0.2);">
+                  <span style="display: inline-block; margin-right: 4px;">⭐</span>Headquarters
+                </div>`
               : ""
           }
         </div>
@@ -108,7 +117,12 @@ export function InteractiveMap({ locations }: InteractiveMapProps) {
 
       const marker = L.marker([location.lat, location.lng], { icon })
         .addTo(map)
-        .bindPopup(popupContent);
+        .bindPopup(popupContent, {
+          className: 'custom-popup',
+          closeButton: true,
+          maxWidth: 300,
+          offset: [0, -10]
+        });
 
       markersRef.current.push(marker);
     });
@@ -143,8 +157,50 @@ export function InteractiveMap({ locations }: InteractiveMapProps) {
   }, []);
 
   return (
-    <div className="w-full h-[500px] md:h-[600px] rounded-3xl overflow-hidden shadow-lg">
+    <div className="w-full h-[500px] md:h-[600px] rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5">
+      <style>{`
+        .leaflet-popup-content-wrapper {
+          border-radius: 12px;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
+          border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .leaflet-popup-tip {
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .custom-marker:hover > div {
+          transform: scale(1.15);
+        }
+        .leaflet-container {
+          background: #f8fafc;
+        }
+      `}</style>
       <div ref={mapRef} className="w-full h-full" />
+    </div>
+  );
+}
+
+// Demo component with sample data
+export default function App() {
+  const sampleLocations = [
+    { city: "San Francisco", state: "California", lat: 37.7749, lng: -122.4194 },
+    { city: "New York", state: "New York", lat: 40.7128, lng: -74.0060 },
+    { city: "Austin", state: "Texas", lat: 30.2672, lng: -97.7431 },
+    { city: "Seattle", state: "Washington", lat: 47.6062, lng: -122.3321 },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-4 md:p-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-3">
+            Our Locations
+          </h1>
+          <p className="text-lg text-slate-600">
+            Explore our offices across the United States
+          </p>
+        </div>
+        <InteractiveMap locations={sampleLocations} />
+      </div>
     </div>
   );
 }
