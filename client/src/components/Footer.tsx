@@ -8,6 +8,7 @@ import {
   MapPin,
   Phone,
   Mail,
+  X,
 } from "lucide-react";
 import { FreeQuoteModal } from "./FreeQuoteModal";
 
@@ -32,11 +33,19 @@ export function Footer() {
               solutions. Join the green revolution today.
             </p>
             <div className="flex gap-4">
-              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
+              {[
+                { Icon: Facebook, url: "https://www.facebook.com/share/1UkbxMyKcX/" },
+                { Icon: X, url: "https://x.com/Swayog_Energy" },
+                { Icon: Instagram, url: "https://www.instagram.com/swayog.energy" },
+                { Icon: Linkedin, url: "https://www.linkedin.com/company/swayog" },
+              ].map(({ Icon, url }, i) => (
                 <a
                   key={i}
-                  href="#"
+                  href={url} 
+                  target="_blank"
+                  rel="noopener noreferrer" 
                   className="p-2 bg-gray-800 rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                  aria-label={`Visit our ${Icon.name} page`}
                 >
                   <Icon className="h-5 w-5" />
                 </a>
@@ -113,7 +122,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3 text-gray-400">
                 <Mail className="h-5 w-5 text-primary shrink-0" />
-                <span>info@swayogurja.com</span>
+                <span>info.swayog@gmail.com</span>
               </li>
             </ul>
             <div className="mt-6">
@@ -127,7 +136,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-          <p>© {new Date().getFullYear()} Swayog Urja. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Swayog Consultancy Services . All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition-colors">
               Privacy Policy
