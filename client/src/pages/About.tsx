@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Target, Lightbulb, Users, Shield, Briefcase, Building2, CheckCircle2, MapPin, Rocket, Sparkles } from "lucide-react";
 import { navigate } from "wouter/use-browser-location";
 import { InteractiveMap } from "@/components/InteractiveMap";
+
+import logoImg from "@/assets/logo.png";
+import { Link } from "wouter";
 export default function About() {
   const strengths = [
     { title: "Technical Expertise", desc: "Strong technical knowledge and collective team experience." },
@@ -28,7 +31,6 @@ export default function About() {
   ];
 
   const teamMembers = [
-    { name: "Yogesh G. Tayade", role: "Proprietor & Technical Head", image: "/images/img1.jpeg" },
     { name: "Gokul Girdhar", role: "Senior Engineer", image: "/images/gokul girdhar.jpeg" },
     { name: "Balaji", role: "Project Manager", image: "/images/balaji.jpeg" },
     { name: "Project Management Team", role: "Solar & Thermal Experts", image: "/images/img2.jpeg" },
@@ -73,7 +75,7 @@ export default function About() {
 
       {/* About Us Section */}
       <section className="py-16 md:py-20 bg-white">
-      <div className="container-custom">
+        <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -176,17 +178,99 @@ export default function About() {
           </div>
         </div>
       </section>
-
+      
+     
       {/* Meet Our Team */}
-      <section className="py-16 md:py-20 bg-gray-50">
+      <section className="py-16 md:py-24 bg-gray-50">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-display font-bold mb-4">Meet Our Expert Team</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Our team of 30+ experienced professionals manages project execution with maximum efficiency and technical excellence.
+            <h2 className="text-3xl lg:text-5xl font-display font-bold mb-4 text-gray-900">
+              Meet Our Expert Team
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              Our leadership and technical team bring decades of collective
+              experience in the solar energy sector.
             </p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-8">
+
+          {/* CEO Feature - Premium High-Impact Layout */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-20 overflow-hidden rounded-[2.5rem] shadow-2xl bg-[#2E8B57] text-white relative"
+          >
+            {/* Background Decorative Pattern */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none">
+              <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.2)_0%,transparent_50%)]" />
+            </div>
+
+            <div className="flex flex-col lg:flex-row relative z-10">
+              {/* CEO Image Side - High Contrast Professional Portrait */}
+              <div className="w-full lg:w-5/12 relative min-h-[500px] lg:min-h-[650px] group">
+                <img 
+                  src="/images/ceo_new.jpg" 
+                  alt="Yogesh G. Tayade - Founder & CEO" 
+                  className="absolute inset-0 w-full h-full object-cover object-center filter grayscale contrast-110 brightness-110 transition-all duration-700 group-hover:grayscale-0 group-hover:contrast-100" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#2E8B57]/10 to-[#2E8B57]" />
+                
+                {/* Statistics Badge */}
+                <div className="absolute top-10 left-10 p-6 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20">
+                  <div className="text-7xl font-display font-bold text-primary leading-none">25</div>
+                  <div className="text-lg font-bold mt-1 text-white tracking-widest uppercase">Years of<br/>Leadership</div>
+                </div>
+
+                {/* Mobile Signature Area */}
+                <div className="absolute bottom-8 left-8 right-8 text-white lg:hidden">
+                  <h3 className="text-3xl font-display font-bold">Yogesh G. Tayade</h3>
+                  <p className="text-primary font-bold tracking-widest uppercase text-xs">Founder & CEO</p>
+                </div>
+              </div>
+
+              {/* CEO Content Side - Quote & Narrative */}
+              <div className="w-full lg:w-7/12 p-8 md:p-16 lg:p-20 flex flex-col justify-between bg-[#2E8B57]">
+                <div className="relative">
+                  {/* Large Quotation Mark */}
+                  <div className="absolute -top-10 -left-6 text-primary/20 text-9xl font-serif select-none">“</div>
+                  
+                  <div className="relative z-10">
+                    <p className="text-2xl md:text-4xl font-display font-medium leading-tight italic text-white mb-10">
+                      "Our vision at Swayog is not just about installing panels; it's about engineering energy independence for every Indian household and industry."
+                    </p>
+                    
+                    <div className="space-y-8 text-white/90 text-lg leading-relaxed mb-12 border-l-4 border-primary pl-8">
+                      <p>
+                        As the Founder and CEO, I have dedicated over two decades to mastering the intricacies of the power sector. My mission for Swayog Consultancy Services is to bridge the gap between complex solar technology and everyday economic benefit.
+                      </p>
+                      <p>
+                        Through technical excellence and a commitment to turnkey EPC solutions, we've successfully commissioned 25+ MW of solar assets. We don't hire from the DNA we want to disrupt; instead, we foster entrepreneurship by empowering local partners across India to lead the green revolution.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-10 mt-auto flex flex-col md:flex-row md:items-end justify-between border-t border-white/10 gap-6">
+                  <div>
+                    <h3 className="text-4xl font-display font-bold mb-1 text-white">Yogesh G. Tayade</h3>
+                    <p className="text-primary font-bold tracking-[0.2em] uppercase text-sm">Founder & CEO, Swayog Consultancy Services</p>
+                  </div>
+                  <div className="space-y-6">
+                    <Link href="/" className="flex items-center gap-2">
+                        <img
+                           src={logoImg}
+                           alt="Swayog Energy Private Limited - Together We Can"
+                           className="h-14 w-auto md:h-14 lg:h-20 object-contain "
+                         />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Team Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-10">
             {teamMembers.map((member, i) => (
               <motion.div
                 key={i}
@@ -197,26 +281,28 @@ export default function About() {
                 className="flex flex-col items-center group"
               >
                 <div className="relative mb-4">
-                  <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-lg group-hover:border-primary transition-colors">
-                    <img 
-                      src={member.image} 
-                      alt={member.name} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                  <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-lg group-hover:border-primary transition-all duration-300">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   </div>
                   <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-6 h-6 bg-primary rounded-full border-4 border-white shadow-md"></div>
                 </div>
                 <div className="text-center">
-                  <h4 className="text-base md:text-lg font-bold mb-1">{member.name}</h4>
-                  <p className="text-sm md:text-base text-primary font-medium">{member.role}</p>
+                  <h4 className="text-base md:text-lg font-bold mb-1 text-gray-900">
+                    {member.name}
+                  </h4>
+                  <p className="text-sm md:text-base text-primary font-medium">
+                    {member.role}
+                  </p>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-
-      
 
       <section className="py-24 bg-white">
         <div className="container-custom">
@@ -270,7 +356,95 @@ export default function About() {
           </div>
         </div>
       </section>
+      <section className="py-16 md:py-24 relative overflow-hidden bg-gray-900 text-white">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/industrial.jpg"
+            alt="Solar Partner"
+            className="w-full h-full object-cover opacity-20 scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/90 to-transparent" />
+        </div>
 
+        <div className="container-custom relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 backdrop-blur-md text-primary font-bold text-sm mb-6 border border-primary/20">
+                <Rocket className="h-4 w-4" />
+                <span className="tracking-widest uppercase">Company Motto</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-6 md:mb-8 leading-tight">
+                Encouraging{" "}
+                <span className="text-primary italic">Entrepreneurship</span>
+              </h2>
+              <p className="text-lg md:text-xl text-gray-300 mb-8 md:mb-10 leading-relaxed max-w-xl">
+                Take charge of your future today. We invite individuals from
+                every state in India to become solar partners in their local
+                regions.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6 mb-10 md:mb-12">
+                {[
+                  {
+                    icon: Users,
+                    title: "Open to All",
+                    text: "Anyone from any state can join us",
+                  },
+                  {
+                    icon: Shield,
+                    title: "Full Support",
+                    text: "Training and resources provided",
+                  },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="flex gap-4 p-6 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+                  >
+                    <item.icon className="h-10 w-10 text-primary shrink-0" />
+                    <div>
+                      <h4 className="font-bold text-lg mb-1">{item.title}</h4>
+                      <p className="text-sm text-gray-400">{item.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <Button
+                size="lg"
+                className="h-14 md:h-16 px-8 md:px-10 text-lg md:text-xl rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold shadow-2xl shadow-primary/20"
+                onClick={() => navigate("/contact")}
+              >
+                Join Our Network
+              </Button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative hidden lg:block"
+            >
+              <div className="p-12 bg-white/10 backdrop-blur-xl rounded-[3rem] border border-white/10 shadow-2xl">
+                <blockquote className="text-2xl font-medium leading-relaxed italic text-gray-100">
+                  "With our comprehensive support and expert training, you’ll
+                  have everything you need to launch and grow a successful,
+                  sustainable enterprise. Build your business with our help."
+                </blockquote>
+                <div className="mt-8 flex items-center gap-4">
+                  <div className="w-12 h-1 bg-primary rounded-full" />
+                  <p className="text-sm font-bold uppercase tracking-widest text-primary">
+                    Swayog Mission
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* Services & Group Companies */}
       <section className="py-20">
@@ -312,6 +486,7 @@ export default function About() {
           </div>
         </div>
       </section>
+      
 
       {/* Final CTA */}
       <section className="py-20 bg-primary">
