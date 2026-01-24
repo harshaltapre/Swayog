@@ -209,7 +209,7 @@ export default function About() {
               {/* CEO Image Side - High Contrast Professional Portrait */}
               <div className="w-full lg:w-5/12 relative min-h-[500px] lg:min-h-[650px] group">
                 <img 
-                  src="/images/ceo_new.jpg" 
+                  src="/images/img1.jpeg" 
                   alt="Yogesh G. Tayade - Founder & CEO" 
                   className="absolute inset-0 w-full h-full object-cover object-center filter grayscale contrast-110 brightness-110 transition-all duration-700 group-hover:grayscale-0 group-hover:contrast-100" 
                 />

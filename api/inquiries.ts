@@ -28,8 +28,12 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
+    console.log('📥 Received inquiry request:', { body: req.body });
     const input = api.inquiries.create.input.parse(req.body);
+    console.log('✅ Input validated successfully');
+    
     const inquiry = await storage.createInquiry(input);
+    console.log('✅ Inquiry saved to database:', { id: inquiry.id, name: inquiry.name });
 
     // Get receiver email from .env file (REQUIRED)
     // This is the ONLY source of truth for receiver email
@@ -85,6 +89,7 @@ export default async function handler(req: any, res: any) {
     try {
       // Get sender email from .env (EMAIL_USER)
       const senderEmail = getSenderEmail();
+      console.log('📧 Preparing to send email notification...');
       
       // Send email using shared utility
       await sendEmail({
@@ -95,6 +100,7 @@ export default async function handler(req: any, res: any) {
         text: messageText,
         html: emailHtml,
       });
+      console.log('✅ Email notification sent successfully');
     } catch (emailErr: any) {
       const errorDetails = {
         error: emailErr.message,
@@ -119,17 +125,24 @@ export default async function handler(req: any, res: any) {
     }
 
     return res.status(201).json({ 
+      success: true,
       ...inquiry,
       emailSent: true, // Indicate email was attempted
     });
   } catch (err) {
     if (err instanceof z.ZodError) {
+      console.error('❌ Validation error:', err.errors);
       return res.status(400).json({
+        success: false,
         message: err.errors[0].message,
         field: err.errors[0].path.join('.'),
       });
     }
-    console.error('Error creating inquiry:', err);
-    return res.status(500).json({ message: 'Internal server error' });
+    console.error('❌ Error creating inquiry:', err);
+    return res.status(500).json({ 
+      success: false,
+      message: 'Internal server error',
+      error: process.env.NODE_ENV === 'development' ? String(err) : undefined
+    });
   }
 }

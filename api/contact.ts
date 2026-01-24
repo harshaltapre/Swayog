@@ -34,8 +34,10 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
+    console.log('📥 Received contact form request');
     const input = contactSchema.parse(req.body);
     const { firstName, lastName, email, subject, message } = input;
+    console.log('✅ Contact form input validated');
 
     // Get receiver email from .env file (REQUIRED)
     // This is the ONLY source of truth for receiver email
@@ -99,6 +101,7 @@ This message was sent from the Swayog Urja website contact form.`;
     try {
       // Get sender email from .env (EMAIL_USER)
       const senderEmail = getSenderEmail();
+      console.log('📧 Preparing to send contact form email...');
       
       // Send email using shared utility
       await sendEmail({
@@ -110,6 +113,7 @@ This message was sent from the Swayog Urja website contact form.`;
         html: emailHtml,
       });
 
+      console.log('✅ Contact form email sent successfully');
       return res.status(200).json({ 
         success: true, 
         message: 'Message sent successfully' 
