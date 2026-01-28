@@ -1,9 +1,9 @@
 // Vercel serverless function for inquiries API
 import 'dotenv/config';
-import { api } from '../shared/routes';
-import { storage } from './storage-utils';
+import { api } from '../shared/routes.js';
+import { storage } from './storage-utils.js';
 import { z } from 'zod';
-import { getReceiverEmail, getSenderEmail, getSmtpConfig, sendEmail } from './email-utils';
+import { getReceiverEmail, getSenderEmail, getSmtpConfig, sendEmail } from './email-utils.js';
 
 export default async function handler(req: any, res: any) {
   // Set Content-Type header early to ensure JSON responses
