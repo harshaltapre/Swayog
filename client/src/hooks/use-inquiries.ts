@@ -18,14 +18,35 @@ export function useCreateInquiry() {
       });
 
       if (!res.ok) {
-        if (res.status === 400) {
-          const error = api.inquiries.create.responses[400].parse(await res.json());
+        // Try to read JSON error payload once
+        let payload: unknown = null;
+        try {
+          payload = await res.json();
+        } catch {
+          // ignore JSON parse errors and fall back to generic message
+        }
+
+        // Validation error from API (400)
+        if (res.status === 400 && payload) {
+          const error = api.inquiries.create.responses[400].parse(payload);
           throw new Error(error.message);
         }
+
+        // Other errors (e.g. 500) – surface server message if available
+        if (
+          payload &&
+          typeof payload === "object" &&
+          "message" in payload &&
+          typeof (payload as any).message === "string"
+        ) {
+          throw new Error((payload as any).message);
+        }
+
         throw new Error("Failed to submit inquiry");
       }
 
-      return api.inquiries.create.responses[201].parse(await res.json());
+      const data201 = await res.json();
+      return api.inquiries.create.responses[201].parse(data201);
     },
     onSuccess: () => {
       toast({
