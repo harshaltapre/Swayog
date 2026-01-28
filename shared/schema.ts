@@ -1,4 +1,4 @@
-import { pgTable, text, serial, timestamp, varchar, integer } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, timestamp, varchar, integer, boolean } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -10,6 +10,7 @@ export const inquiries = pgTable("inquiries", {
   customerNo: text("customer_no"), // Added customer number
   projectType: text("project_type").notNull(), // Residential, Commercial, Industrial
   message: text("message").notNull(),
+  termsAccepted: boolean("terms_accepted").notNull().default(false),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
@@ -24,6 +25,11 @@ export const insertInquirySchema = createInsertSchema(inquiries).omit({
   // even if they don't know or want to provide it.
   // Accept either a non-empty string or an empty value.
   customerNo: z.string().min(1, "Consumer ID is required").optional().or(z.literal("")),
+  termsAccepted: z.literal(true, {
+    errorMap: () => ({
+      message: "You must accept the terms and conditions to submit your quotation request.",
+    }),
+  }),
 });
 
 export type Inquiry = typeof inquiries.$inferSelect;

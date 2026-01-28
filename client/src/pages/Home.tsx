@@ -61,7 +61,7 @@ export default function Home() {
               <span className="text-orange-400">Smart Savings.</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-200 mb-8 leading-relaxed max-w-lg">
-              Switch to solar with Swayog Urja. Reduce your electricity bills by
+              Switch to solar with Swayog Energy. Reduce your electricity bills by
               up to 90% and contribute to a greener planet.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full">
@@ -177,7 +177,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <span className="text-primary font-semibold uppercase tracking-wider text-sm">
-                Why Swayog Urja?
+                Why Swayog Energy?
               </span>
               <h2 className="text-3xl lg:text-4xl font-display font-bold mt-2 mb-6 text-gray-900">
                 Engineering Excellence Meets Sustainable Innovation

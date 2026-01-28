@@ -39,8 +39,12 @@ CREATE TABLE IF NOT EXISTS inquiries (
   customer_no TEXT,
   project_type TEXT NOT NULL,
   message TEXT NOT NULL,
+  terms_accepted BOOLEAN NOT NULL DEFAULT FALSE,
   created_at TIMESTAMP DEFAULT NOW()
 );
+
+ALTER TABLE inquiries
+  ADD COLUMN IF NOT EXISTS terms_accepted BOOLEAN NOT NULL DEFAULT FALSE;
 
 CREATE INDEX IF NOT EXISTS idx_inquiries_email ON inquiries(email);
 CREATE INDEX IF NOT EXISTS idx_inquiries_created_at ON inquiries(created_at);

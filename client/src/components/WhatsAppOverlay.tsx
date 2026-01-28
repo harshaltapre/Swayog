@@ -3,7 +3,7 @@ import { SiWhatsapp } from "react-icons/si";
 export function WhatsAppOverlay() {
   const phoneNumber = "9272099152";
   const message = encodeURIComponent(
-    "Hello Swayog Urja, I'm interested in solar installation.",
+    "Hello Swayog Energy, I'm interested in solar installation.",
   );
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 

@@ -52,18 +52,27 @@ export default async function handler(req: any, res: any) {
       });
     }
 
+    const submittedAt = new Date().toISOString();
+
     // Prepare message body with all contact form details
-    const messageText = `New Contact Form Message Received
-
-Name: ${firstName} ${lastName}
-Email: ${email}
-Subject: ${subject}
-
-Message:
-${message}
-
----
-This message was sent from the Swayog Urja website contact form.`;
+    const messageText = [
+      `New Contact Message`,
+      ``,
+      `Submitted At (UTC): ${submittedAt}`,
+      ``,
+      `From`,
+      `- Name: ${firstName} ${lastName}`,
+      `- Email: ${email}`,
+      ``,
+      `Subject`,
+      `${subject}`,
+      ``,
+      `Message`,
+      `${message}`,
+      ``,
+      `Reply`,
+      `Reply to this email to respond directly to the sender (Reply-To: ${email}).`,
+    ].join('\n');
 
     // Get SMTP configuration from .env
     const smtpConfig = getSmtpConfig();
@@ -78,23 +87,48 @@ This message was sent from the Swayog Urja website contact form.`;
       targetEmail: targetEmail,
     });
 
+    const safeMessageHtml = String(message || '').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
+
     // Prepare email content
     const emailHtml = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #ea580c;">New Contact Form Message</h2>
-        <div style="background-color: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
-          <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-          <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-          <p><strong>Subject:</strong> ${subject}</p>
+      <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; padding: 24px;">
+        <div style="border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden;">
+          <div style="background: #ea580c; color: #ffffff; padding: 18px 20px;">
+            <div style="font-size: 18px; font-weight: 700; margin: 0;">New Contact Message</div>
+            <div style="font-size: 13px; opacity: 0.9; margin-top: 6px;">Swayog Energy • Website Contact Form</div>
+          </div>
+
+          <div style="padding: 18px 20px; background: #ffffff;">
+            <div style="font-size: 13px; color: #6b7280; margin-bottom: 14px;">
+              Submitted (UTC): <strong style="color:#111827;">${submittedAt}</strong>
+            </div>
+
+            <div style="border: 1px solid #f1f5f9; border-radius: 12px; padding: 14px; background: #f9fafb;">
+              <div style="font-weight: 700; margin-bottom: 10px; color:#111827;">Sender</div>
+              <table style="width: 100%; border-collapse: collapse; font-size: 14px; color:#111827;">
+                <tr><td style="padding: 6px 0; color:#6b7280; width: 140px;">Name</td><td style="padding: 6px 0;"><strong>${firstName} ${lastName}</strong></td></tr>
+                <tr><td style="padding: 6px 0; color:#6b7280;">Email</td><td style="padding: 6px 0;"><a href="mailto:${email}" style="color:#0f766e; text-decoration:none;">${email}</a></td></tr>
+                <tr><td style="padding: 6px 0; color:#6b7280;">Subject</td><td style="padding: 6px 0;">${subject}</td></tr>
+              </table>
+            </div>
+
+            <div style="margin-top: 14px; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px;">
+              <div style="font-weight: 700; margin-bottom: 10px; color:#111827;">Message</div>
+              <div style="font-size: 14px; line-height: 1.55; color:#111827;">${safeMessageHtml}</div>
+            </div>
+
+            <div style="margin-top: 14px; border-top: 1px dashed #e5e7eb; padding-top: 14px;">
+              <div style="font-weight: 700; margin-bottom: 6px; color:#111827;">Reply to this message</div>
+              <div style="font-size: 14px; color:#374151; line-height: 1.5;">
+                Simply <strong>reply to this email</strong> — it will go to <a href="mailto:${email}" style="color:#0f766e; text-decoration:none;">${email}</a> (Reply-To is set).
+              </div>
+            </div>
+          </div>
         </div>
-        <div style="background-color: #ffffff; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px;">
-          <h3 style="margin-top: 0;">Message:</h3>
-          <p style="white-space: pre-wrap;">${message.replace(/\n/g, '<br>')}</p>
+
+        <div style="font-size: 12px; color: #6b7280; margin-top: 14px;">
+          Sent from Swayog Energy website contact form.
         </div>
-        <p style="color: #6b7280; font-size: 12px; margin-top: 20px;">
-          This message was sent from the Swayog Urja website contact form.<br>
-          You can reply directly to this email to respond to ${firstName} ${lastName}.
-        </p>
       </div>
     `;
 
@@ -108,7 +142,7 @@ This message was sent from the Swayog Urja website contact form.`;
         to: targetEmail, // Receiver: NOTIFY_EMAIL from .env
         from: senderEmail, // Sender: EMAIL_USER from .env (e.g., harshaltapre23@gmail.com)
         replyTo: email, // User's email for reply
-        subject: `Contact Form: ${subject}`,
+        subject: `Contact Message — ${subject}`,
         text: messageText,
         html: emailHtml,
       });

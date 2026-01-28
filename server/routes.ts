@@ -50,7 +50,7 @@ Message:
 ${message}
 
 ---
-This message was sent from the Swayog Urja website contact form.`;
+This message was sent from the Swayog Energy website contact form.`;
 
       // Get SMTP configuration from .env
       const smtpConfig = getSmtpConfig();
@@ -164,7 +164,7 @@ This message was sent from the Swayog Urja website contact form.`;
             <p style="white-space: pre-wrap;">${inquiry.message.replace(/\n/g, '<br>')}</p>
           </div>
           <p style="color: #6b7280; font-size: 12px; margin-top: 20px;">
-            This inquiry was sent from the Swayog Urja website.<br>
+            This inquiry was sent from the Swayog Energy website.<br>
             You can reply directly to this email to respond to ${inquiry.name}.
           </p>
         </div>

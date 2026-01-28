@@ -24,6 +24,7 @@ import { useCreateInquiry } from "@/hooks/use-inquiries";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
+import { Checkbox } from "@/components/ui/checkbox";
 
 type FormData = z.infer<typeof insertInquirySchema>;
 
@@ -40,6 +41,7 @@ export function FreeQuoteModal({ children }: { children: React.ReactNode }) {
       projectType: "Residential",
       message: "",
       customerNo: "",
+      termsAccepted: false as any,
     },
   });
 
@@ -166,6 +168,35 @@ export function FreeQuoteModal({ children }: { children: React.ReactNode }) {
               {form.formState.errors.message && (
                 <p className="text-xs text-red-500">
                   {form.formState.errors.message.message}
+                </p>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex items-start gap-3">
+                <Checkbox
+                  id="termsAccepted"
+                  checked={!!form.watch("termsAccepted")}
+                  onCheckedChange={(checked) => {
+                    form.setValue("termsAccepted", checked === true, {
+                      shouldValidate: true,
+                      shouldDirty: true,
+                      shouldTouch: true,
+                    });
+                  }}
+                />
+                <Label
+                  htmlFor="termsAccepted"
+                  className="text-sm leading-relaxed text-gray-700 cursor-pointer"
+                >
+                  I agree to the Terms & Conditions. I understand this is a quotation
+                  registration request, and a Swayog Energy team member will contact me.
+                  I will coordinate and speak with the team to proceed further.
+                </Label>
+              </div>
+              {form.formState.errors.termsAccepted && (
+                <p className="text-xs text-red-500">
+                  {String(form.formState.errors.termsAccepted.message)}
                 </p>
               )}
             </div>

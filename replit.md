@@ -1,8 +1,8 @@
-# Swayog Urja - Solar Installation Company Website
+# Swayog Energy - Solar Installation Company Website
 
 ## Overview
 
-This is a modern, conversion-focused website for **Swayog Urja**, a solar installation company based in India. The application is a full-stack TypeScript project featuring a React frontend with a clean, mobile-first design and an Express backend with PostgreSQL database for storing customer inquiries. The site focuses on lead generation through strategically placed "Get Free Quote" call-to-action buttons throughout all pages.
+This is a modern, conversion-focused website for **Swayog Energy**, a solar installation company based in India. The application is a full-stack TypeScript project featuring a React frontend with a clean, mobile-first design and an Express backend with PostgreSQL database for storing customer inquiries. The site focuses on lead generation through strategically placed "Get Free Quote" call-to-action buttons throughout all pages.
 
 ## User Preferences
 
