@@ -2,8 +2,8 @@
  * Storage utility for Vercel serverless functions
  */
 
-import { inquiries, type Inquiry, type InsertInquiry } from "@shared/schema";
-import { db } from "./db-utils";
+import { inquiries, type Inquiry, type InsertInquiry } from "../shared/schema.js";
+import { db } from "./db-utils.js";
 import { eq } from "drizzle-orm";
 
 export interface IStorage {
