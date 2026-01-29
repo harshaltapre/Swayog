@@ -136,7 +136,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-          <p>© {new Date().getFullYear()} Swayog Eneregy Private limited  . All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Swayog Eneregy Private limited. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition-colors">
               Privacy Policy
