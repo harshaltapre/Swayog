@@ -24,7 +24,7 @@ export default function About() {
   ];
 
   const groupCompanies = [
-    "Swayog Consultancy Services",
+    "Swayog Eneregy Private limited ",
     "Swayog Energy Pvt. Ltd.",
     "Swayog Wattfin JV Pvt Ltd",
     "Wattfin Ventures Pvt Ltd, Nagpur"
@@ -60,7 +60,7 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl lg:text-6xl font-display font-bold mb-6"
           >
-            Swayog Consultancy Services
+            Swayog Eneregy Private limited 
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -88,7 +88,7 @@ export default function About() {
               </h2>
               <div className="space-y-4 md:space-y-6 text-gray-600 text-base md:text-lg leading-relaxed">
                 <p>
-                  Swayog Consultancy Services is honored to introduce itself as a company that brings complete Solar energy and electrical solutions under one roof. We provide Solar Energy and electrical Solutions, on turnkey basis or only for selective scope of work for small as well as utility scale projects.
+                  Swayog Eneregy Private limited  is honored to introduce itself as a company that brings complete Solar energy and electrical solutions under one roof. We provide Solar Energy and electrical Solutions, on turnkey basis or only for selective scope of work for small as well as utility scale projects.
                 </p>
                 <p>
                   Established in year 2017, we have installed around 25 MW+ of solar projects. Our team consists of expert engineers, technicians, and consultants with cumulative 25+ years of experience in solar energy, electrical, thermal power, and other industries.
@@ -142,7 +142,7 @@ export default function About() {
               </div>
               <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
               <p className="text-gray-600 text-lg leading-relaxed">
-                Swayog Consultancy Services designs, develops, maintains and deploys Solar PV technology to produce high-value electricity for the betterment of mankind.
+                Swayog Eneregy Private limited  designs, develops, maintains and deploys Solar PV technology to produce high-value electricity for the betterment of mankind.
               </p>
             </motion.div>
             <motion.div 
@@ -215,52 +215,54 @@ export default function About() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#2E8B57]/10 to-[#2E8B57]" />
                 
-                {/* Statistics Badge */}
-                <div className="absolute top-10 left-10 p-6 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20">
-                  <div className="text-7xl font-display font-bold text-primary leading-none">25</div>
-                  <div className="text-lg font-bold mt-1 text-white tracking-widest uppercase">Years of<br/>Leadership</div>
+                {/* Statistics Badge - Small on mobile, positioned bottom-right on medium screens */}
+                <div className="absolute top-6 left-6 sm:top-auto sm:left-auto sm:bottom-24 sm:right-6 lg:top-10 lg:left-10 lg:bottom-auto lg:right-auto p-3 sm:p-4 lg:p-6 bg-white/10 backdrop-blur-xl rounded-xl lg:rounded-2xl border border-white/20 shadow-lg">
+                  <div className="text-3xl sm:text-4xl lg:text-7xl font-display font-bold text-primary leading-none">25</div>
+                  <div className="text-[10px] sm:text-xs lg:text-lg font-bold mt-0.5 lg:mt-1 text-white tracking-widest uppercase whitespace-nowrap leading-tight">
+                    Years of<br/>Leadership
+                  </div>
                 </div>
 
-                {/* Mobile Signature Area */}
-                <div className="absolute bottom-8 left-8 right-8 text-white lg:hidden">
-                  <h3 className="text-3xl font-display font-bold">Yogesh G. Tayade</h3>
-                  <p className="text-primary font-bold tracking-widest uppercase text-xs">Founder & CEO</p>
+                {/* Mobile Signature Area - Enhanced visibility with gradient background */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent lg:hidden">
+                  <h3 className="text-xl sm:text-2xl font-display font-bold text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">Yogesh G. Tayade</h3>
+                  <p className="text-primary font-bold tracking-widest uppercase text-[10px] sm:text-xs mt-1 drop-shadow-lg">Founder & CEO</p>
                 </div>
               </div>
 
               {/* CEO Content Side - Quote & Narrative */}
-              <div className="w-full lg:w-7/12 p-8 md:p-16 lg:p-20 flex flex-col justify-between bg-[#2E8B57]">
+              <div className="w-full lg:w-7/12 p-6 sm:p-8 md:p-12 lg:p-20 flex flex-col justify-between bg-[#2E8B57]">
                 <div className="relative">
                   {/* Large Quotation Mark */}
-                  <div className="absolute -top-10 -left-6 text-primary/20 text-9xl font-serif select-none">“</div>
+                  <div className="absolute -top-6 sm:-top-10 -left-3 sm:-left-6 text-primary/20 text-6xl sm:text-9xl font-serif select-none leading-none">"</div>
                   
                   <div className="relative z-10">
-                    <p className="text-2xl md:text-4xl font-display font-medium leading-tight italic text-white mb-10">
+                    <p className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-display font-medium leading-tight italic text-white mb-6 sm:mb-8 lg:mb-10">
                       "Our vision at Swayog is not just about installing panels; it's about engineering energy independence for every Indian household and industry."
                     </p>
                     
-                    <div className="space-y-8 text-white/90 text-lg leading-relaxed mb-12 border-l-4 border-primary pl-8">
+                    <div className="space-y-4 sm:space-y-6 lg:space-y-8 text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed mb-8 sm:mb-10 lg:mb-12 border-l-2 sm:border-l-4 border-primary pl-4 sm:pl-6 lg:pl-8">
                       <p>
-                        As the Founder and CEO, I have dedicated over two decades to mastering the intricacies of the power sector. My mission for Swayog Consultancy Services is to bridge the gap between complex solar technology and everyday economic benefit.
+                        As the Founder and CEO, I have dedicated over two decades to mastering the intricacies of the power sector. My mission for Swayog Energy Private Limited is to bridge the gap between complex solar technology and everyday economic benefit.
                       </p>
                       <p>
-                        Through technical excellence and a commitment to turnkey EPC solutions, we've successfully commissioned 25+ MW of solar assets. We don't hire from the DNA we want to disrupt; instead, we foster entrepreneurship by empowering local partners across India to lead the green revolution.
+                        Through technical excellence and a commitment to turnkey EPC solutions, we have successfully facilitated the installation of 25+ MW of solar assets. We don't hire from the DNA we want to disrupt; instead, we foster entrepreneurship by empowering local partners across India to lead the green revolution.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-10 mt-auto flex flex-col md:flex-row md:items-end justify-between border-t border-white/10 gap-6">
+                <div className="pt-6 sm:pt-8 lg:pt-10 mt-auto flex flex-col md:flex-row md:items-end justify-between border-t border-white/10 gap-4 sm:gap-6">
                   <div>
-                    <h3 className="text-4xl font-display font-bold mb-1 text-white">Yogesh G. Tayade</h3>
-                    <p className="text-primary font-bold tracking-[0.2em] uppercase text-sm">Founder & CEO, Swayog Consultancy Services</p>
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold mb-1 text-white">Yogesh G. Tayade</h3>
+                    <p className="text-primary font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-[10px] sm:text-xs lg:text-sm">Founder & CEO, Swayog Energy Private Limited</p>
                   </div>
                   <div className="space-y-6">
                     <Link href="/" className="flex items-center gap-2">
                         <img
                            src={logoImg}
                            alt="Swayog Energy Private Limited - Together We Can"
-                           className="h-14 w-auto md:h-14 lg:h-20 object-contain "
+                           className="h-12 sm:h-14 lg:h-20 w-auto object-contain"
                          />
                     </Link>
                   </div>
